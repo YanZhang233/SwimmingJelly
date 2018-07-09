@@ -3,6 +3,77 @@ body {
     background: #1E56A0;
 }
 
+.heart-cta {
+    position: fixed;
+    margin: 0;
+    left: 40vw;
+    top: 20vh;
+    width: 35vmin;
+    height: 5vmin;
+    z-index: 1;
+}
+
+.heart {
+    background: #EAAFAF;
+    width: 5vmin;
+    height: 5vmin;
+    transform: rotate(-45deg);
+    position: absolute;
+}
+
+.heart::before,
+.heart::after {
+    content: "";
+    width: 5vmin;
+    height: 5vmin;
+    background: #EAAFAF;
+    border-radius: 50%;
+    position: absolute;
+    /*left: 3vmin;*/
+    left: 3.5vmin;
+}
+
+.heart::before {
+    left: 0;
+    /*top: -3vmin;*/
+    top: -3.5vmin;
+}
+
+.heart1 {
+    animation: loading 2s linear infinite alternate;
+}
+
+.heart2 {
+    left: 43%;
+    animation: loading 2s 1s linear infinite alternate;
+}
+
+.heart3 {
+    right: 0;
+    animation: loading 2s 2s linear infinite alternate;
+}
+
+.msg {
+    position: fixed;
+    margin: 0;
+    left: 40vw;
+    top: 0;
+    width: 35vmin;
+    height: 5vmin;
+    z-index: 1;
+    text-align: center;
+    color: #163172;
+    font-size: 3rem;
+    opacity: 0.2;
+    animation:
+            msg-appearing 1s ease-in 1 forwards,
+            rotating 0.5s 1s linear 5 alternate;
+}
+
+.hide {
+    display: none;
+}
+
 .jelly {
     margin: 0;
     width: 100vw;
@@ -50,12 +121,31 @@ body {
     right: 0;
 }
 
-@keyframes blink {
-    0%, 4%, 10%, 34%, 40%, 100% {
-        transform: scaleY(1);
+@keyframes loading {
+    0% {
+        opacity: 1;
     }
-    7%, 37% {
-        transform: scaleY(0);
+    50% {
+        opacity: 0.6;
+    }
+    100% {
+        opacity: 0.2;
+    }
+}
+
+@keyframes msg-appearing {
+    to {
+        top: 15vh;
+        opacity: 1;
+    }
+}
+
+@keyframes rotating {
+    from {
+        transform: rotate(-30deg);
+    }
+    to {
+        transform: rotate(30deg);
     }
 }
 
@@ -69,5 +159,14 @@ body {
     to {
         /*transform: translateX(calc(100vw - 40vmin));*/
         left: calc(100vw - 40vmin + 7vmin);
+    }
+}
+
+@keyframes blink {
+    0%, 4%, 10%, 34%, 40%, 100% {
+        transform: scaleY(1);
+    }
+    7%, 37% {
+        transform: scaleY(0);
     }
 }
